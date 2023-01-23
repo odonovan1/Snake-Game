@@ -2,7 +2,7 @@
 ## Date: 1/23/23
 ### By: Owen Donovan
 
-#### [Link1](http://www.duckduckgo.com) | [Link2](http://www.duckduckgo.com) | [Link3](http://www.duckduckgo.com)
+#### [Link1](https://trello.com/b/QGyrN83C/snake-like-game) | [Link2](https://trello.com/b/QGyrN83C/snake-like-game) | [Link3](https://trello.com/b/QGyrN83C/snake-like-game)
 ***
 ## ***Game Details***
 #### **This game will be a snake-like game played within the browser. Using arrow keys as input the user will be able to move around the board eating "food" which increase the size of the snake. If the "snake" comes in contact with itself or the border then the game will then be over**
@@ -20,7 +20,7 @@
 ![image]()
 ***
 ## *Future Updates*
-- [ ] Future Update 1
-- [ ] Future Update 2
-- [] Completed Update
-- [] Done
+- [ ] Add Score
+- [ ] Add Enemies
+- [] Add sounds effects
+- [] Add difficulty levels
