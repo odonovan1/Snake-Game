@@ -1,4 +1,4 @@
-const speedLevel = 20000
+const speedLevel = 500
 const snakeCoordinates = [
   { x: 11, y: 11 }
 ]
@@ -19,6 +19,7 @@ const playGame = () => {
   renderUpgrade()
   updateSnake()
   updateUpgrade()
+  checkPosition(snakeCoordinates[0])
   console.log(snakeCoordinates[0])
 }
 
@@ -94,7 +95,9 @@ const randomizeUpgrade = () => {
 }
 
 const checkPosition = (headCoord) => {
-
+  if (headCoord.x > 21 || headCoord.x < 1 || headCoord.y > 21 || headCoord.y < 1) {
+    alert('YOU LOSE')
+  }
 }
 //adds an event listener to the keys used to control the snake, used stackoverflow as reference on how to complete
 //When a key is pressed set userInput equal to the corresponding direction, direction is then added to the actual x and y coordinates constantly updating its position
