@@ -1,0 +1,28 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+#game-display {
+  display: grid;
+  height: 100vmin;
+  width: 100vmin;
+  grid-template-columns: repeat(21, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  background-color: aqua;
+  border: 5px solid black;
+
+}
+
+.snakeBody {
+  background-color: chartreuse;
+  border: 5px solid black;
+}
+
+.upgrade {
+  background-color: crimson;
+}
