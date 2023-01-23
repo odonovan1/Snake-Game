@@ -1,4 +1,4 @@
-const speedLevel = 30000
+const speedLevel = 200
 const snakeCoordinates = [
   { x: 11, y: 11 }
 ]
@@ -72,7 +72,11 @@ const validateUpgrade = (upgradeCoordinates, snakeHeadCoordinates) => {
   }
 }
 //for each of the amount of uprades push a new coordinate object to the end of the snake coordinates array with the values of the last segment
+//Had issue rendering first new segment, if statement handles if there is only one item in the coordinates array
 const addUpgrade = () => {
+  if (snakeCoordinates.length === 1) {
+    snakeCoordinates.push({ ...snakeCoordinates[snakeCoordinates.length - 1] })
+  }
   for (let i = 0; i < newUpgrades; i++) {
     snakeCoordinates.push({ ...snakeCoordinates[snakeCoordinates.length - 1] })
   }
