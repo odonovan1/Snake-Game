@@ -1,4 +1,4 @@
-const speedLevel = 200
+const speedLevel = 20000
 const snakeCoordinates = [
   { x: 11, y: 11 }
 ]
@@ -7,6 +7,7 @@ let userInput = { x: 0, y: 0 }
 let previousInput = { x: 0, y: 0 }
 let upgrade = { x: 5, y: 5 }
 let newUpgrades = 1
+let gameState = true
 
 
 
@@ -18,6 +19,7 @@ const playGame = () => {
   renderUpgrade()
   updateSnake()
   updateUpgrade()
+  console.log(snakeCoordinates[0])
 }
 
 const renderSnake = () => {
@@ -80,6 +82,19 @@ const addUpgrade = () => {
   for (let i = 0; i < newUpgrades; i++) {
     snakeCoordinates.push({ ...snakeCoordinates[snakeCoordinates.length - 1] })
   }
+  randomizeUpgrade()
+}
+//When called this function will set the new coordinates of the upgrade to a random number between 1 and 21
+const randomizeUpgrade = () => {
+  const xCoord = Math.floor((Math.random() * 21) + 1)
+  const yCoord = Math.floor((Math.random() * 21) + 1)
+  upgrade.x = xCoord
+  upgrade.y = yCoord
+
+}
+
+const checkPosition = (headCoord) => {
+
 }
 //adds an event listener to the keys used to control the snake, used stackoverflow as reference on how to complete
 //When a key is pressed set userInput equal to the corresponding direction, direction is then added to the actual x and y coordinates constantly updating its position
