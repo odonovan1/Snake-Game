@@ -86,6 +86,8 @@ const addUpgrade = () => {
   randomizeUpgrade()
 }
 //When called this function will set the new coordinates of the upgrade to a random number between 1 and 21
+//it will then plug in the coordinates to the verifyUpgradeLocation function if it is valid it will set the new coordinates for the food
+//if it is false then recursivley call randomizeUpgrade again until true condition is met
 const randomizeUpgrade = () => {
   const xCoord = Math.floor((Math.random() * 21) + 1)
   const yCoord = Math.floor((Math.random() * 21) + 1)
@@ -93,12 +95,17 @@ const randomizeUpgrade = () => {
   upgrade.y = yCoord
 
 }
+//verifies if the coordinates randomly produced fall somewhere on the snake, if it does return false, otherwise return true
+const verifyUpgradeLocation = () => {
 
+}
+//Currently checks if the snakeHead is within the area of the actual gameboard, if not displays an alert
 const checkPosition = (headCoord) => {
   if (headCoord.x > 21 || headCoord.x < 1 || headCoord.y > 21 || headCoord.y < 1) {
     alert('YOU LOSE')
   }
 }
+
 //adds an event listener to the keys used to control the snake, used stackoverflow as reference on how to complete
 //When a key is pressed set userInput equal to the corresponding direction, direction is then added to the actual x and y coordinates constantly updating its position
 document.addEventListener('keypress', function (e) {
