@@ -20,12 +20,12 @@ body {
 
 #game-info {
   display: grid;
-  height: 50vh;
+  height: 80vmin;
   justify-content: center;
   align-items: center;
   grid-template-rows: repeat(3, 1fr);
 
-  border: 10px solid rebeccapurple;
+  border: 5px solid rebeccapurple;
 }
 
 .snakeBody {
@@ -35,4 +35,17 @@ body {
 
 .upgrade {
   background-color: crimson;
+}
+
+button {
+  height: 90px;
+  width: 150px;
+  margin-left: 50px;
+
+}
+
+#score {
+  font-size: x-large;
+  margin-left: 90px;
+  margin-bottom: 200px;
 }

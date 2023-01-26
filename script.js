@@ -1,5 +1,5 @@
 const speedLevel = 200
-const snakeCoordinates = [
+let snakeCoordinates = [
   { x: 11, y: 11 }
 ]
 const gameDisplay = document.getElementById('game-display')
@@ -8,7 +8,10 @@ let previousInput = { x: 0, y: 0 }
 let upgrade = { x: 12, y: 12 }
 let newUpgrades = 5
 let gameState = true
+let score = 0
 const resetBtn = document.getElementById('reset')
+const gameOver = document.getElementById('game-over')
+const userScore = document.getElementById('score')
 
 
 
@@ -21,11 +24,13 @@ const playGame = () => {
     updateSnake()
     updateUpgrade()
     checkPosition(snakeCoordinates[0])
+  } else if (gameState === false) {
+    gameOver.innerHTML = 'LOSS! reset to play again'
   }
 }
 
 const renderSnake = () => {
-  console.log('render')
+
   //for each coordinate in the list create a new div and set its position to where its object dictates
   //applies snakeBody class to each new div which makes it appear
   //appends that div into the main game-display div
@@ -68,6 +73,8 @@ const renderUpgrade = () => {
 const updateUpgrade = () => {
   if (validateUpgrade(upgrade, snakeCoordinates[0])) {
     addUpgrade()
+    score += 1
+    userScore.innerHTML = `Score: ${score}`
   }
 
 }
@@ -76,6 +83,7 @@ const validateUpgrade = (upgradeCoordinates, snakeHeadCoordinates) => {
   if (upgradeCoordinates.x === snakeHeadCoordinates.x && upgradeCoordinates.y === snakeHeadCoordinates.y) {
 
     return true
+
 
   } else {
     return false
@@ -123,9 +131,9 @@ const verifyUpgradeLocation = (x, y) => {
 }
 //Currently checks if the snakeHead is within the area of the actual gameboard, if not displays an alert
 const checkPosition = (headCoord) => {
-  if (headCoord.x > 22 || headCoord.x < 0 || headCoord.y > 22 || headCoord.y < 0) {
+  if (headCoord.x >= 22 || headCoord.x < 0 || headCoord.y >= 22 || headCoord.y < 0) {
     gameState = false
-    alert('YOU LOSE outside bounds')
+
   }
 
 }
@@ -134,15 +142,28 @@ const checkSelfHit = (headCoord) => {
   if (snakeCoordinates.length > 1) {
     for (let i = 1; i < snakeCoordinates.length; i++) {
       if (headCoord.x === snakeCoordinates[i].x && headCoord.y === snakeCoordinates[i].y) {
-        console.log(snakeCoordinates)
-        console.log(snakeCoordinates[i])
+
         gameState = false
 
-        alert('you lose self hit')
+
 
       }
     }
   }
+}
+//called by button press, resets the snake back to one coordinates changes user input to nothing set gamestate back to true and clear the gameOver inner html
+const resetGame = () => {
+  snakeCoordinates = [
+    { x: 11, y: 11 }
+  ]
+  userInput = { x: 0, y: 0 }
+  previousInput = { x: 0, y: 0 }
+  score = 0
+  userScore.innerHTML = 'Score: 0'
+  gameOver.innerHTML = ''
+  gameState = true
+
+
 }
 
 //adds an event listener to the keys used to control the snake, used stackoverflow as reference on how to complete
@@ -153,7 +174,7 @@ document.addEventListener('keypress', function (e) {
   if (e.key === 'w') {
     if (previousInput.y === 0) {
       userInput = { x: 0, y: -1 }
-      console.log('up')
+
     }
 
   } else if (e.key === 's') {
@@ -172,7 +193,7 @@ document.addEventListener('keypress', function (e) {
 })
 
 resetBtn.addEventListener('click', () => {
-
+  resetGame()
 })
 //Loops through the playGame function every second when speedLevel is 1000
 setInterval(playGame, speedLevel)
