@@ -91,13 +91,26 @@ const addUpgrade = () => {
 const randomizeUpgrade = () => {
   const xCoord = Math.floor((Math.random() * 21) + 1)
   const yCoord = Math.floor((Math.random() * 21) + 1)
-  upgrade.x = xCoord
-  upgrade.y = yCoord
+  if (verifyUpgradeLocation(xCoord, yCoord) === true) {
+    upgrade.x = xCoord
+    upgrade.y = yCoord
+  } else if (verifyUpgradeLocation(xCoord, yCoord) === false) {
+    randomizeUpgrade()
+  }
+
 
 }
 //verifies if the coordinates randomly produced fall somewhere on the snake, if it does return false, otherwise return true
-const verifyUpgradeLocation = () => {
-
+const verifyUpgradeLocation = (x, y) => {
+  let validLocation = true
+  for (let i = 0; i < snakeCoordinates.length; i++) {
+    if (snakeCoordinates[i].x === x && snakeCoordinates[i].y === y) {
+      validLocation = false
+    } else {
+      validLocation = true
+    }
+  }
+  return validLocation
 }
 //Currently checks if the snakeHead is within the area of the actual gameboard, if not displays an alert
 const checkPosition = (headCoord) => {
