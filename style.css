@@ -37,15 +37,38 @@ body {
   background-color: crimson;
 }
 
-button {
+#reset {
   height: 90px;
   width: 150px;
   margin-left: 50px;
+  margin-bottom: 200px;
 
 }
 
 #score {
   font-size: x-large;
   margin-left: 90px;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
+
+}
+
+#buttons {
+  display: flex;
+  margin-left: 40px;
+  width: 150px;
+
+}
+
+.speed {
+
+  font-family: monospace;
+  background-color: chocolate;
+
+
+}
+
+
+#game-over {
+  display: flex;
+  justify-content: center;
 }

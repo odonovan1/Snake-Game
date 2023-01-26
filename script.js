@@ -160,7 +160,7 @@ const resetGame = () => {
   previousInput = { x: 0, y: 0 }
   score = 0
   userScore.innerHTML = 'Score: 0'
-  gameOver.innerHTML = ''
+  gameOver.innerHTML = 'You Got This!'
   gameState = true
 
 
