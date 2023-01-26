@@ -1,4 +1,4 @@
-const speedLevel = 500
+const speedLevel = 300
 const snakeCoordinates = [
   { x: 11, y: 11 }
 ]
@@ -116,6 +116,13 @@ const verifyUpgradeLocation = (x, y) => {
 const checkPosition = (headCoord) => {
   if (headCoord.x > 21 || headCoord.x < 1 || headCoord.y > 21 || headCoord.y < 1) {
     alert('YOU LOSE')
+  }
+}
+const checkSelfHit = (headCoord) => {
+  for (let i = 1; i < snakeCoordinates.length; i++) {
+    if (headCoord.x === snakeCoordinates[i].x && headCoord.y === snakeCoordinates[i].y) {
+      alert('you lose!')
+    }
   }
 }
 
