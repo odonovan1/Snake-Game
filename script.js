@@ -1,4 +1,4 @@
-let speedLevel = 135
+let speedLevel = 100
 let snakeCoordinates = [
   { x: 11, y: 11 }
 ]
