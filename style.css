@@ -9,8 +9,8 @@ body {
 
 #game-display {
   display: grid;
-  height: 100vmin;
-  width: 100vmin;
+  height: 80vmin;
+  width: 80vmin;
   grid-template-columns: repeat(21, 1fr);
   grid-template-rows: repeat(21, 1fr);
   background-color: aqua;

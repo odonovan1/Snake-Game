@@ -1,12 +1,12 @@
-const speedLevel = 300
+const speedLevel = 200
 const snakeCoordinates = [
   { x: 11, y: 11 }
 ]
 const gameDisplay = document.getElementById('game-display')
 let userInput = { x: 0, y: 0 }
 let previousInput = { x: 0, y: 0 }
-let upgrade = { x: 5, y: 5 }
-let newUpgrades = 1
+let upgrade = { x: 12, y: 12 }
+let newUpgrades = 5
 let gameState = true
 
 
@@ -20,6 +20,8 @@ const playGame = () => {
   updateSnake()
   updateUpgrade()
   checkPosition(snakeCoordinates[0])
+
+
   console.log(snakeCoordinates[0])
 }
 
@@ -40,13 +42,17 @@ const renderSnake = () => {
   previousInput = userInput
   snakeCoordinates[0].x += userInput.x
   snakeCoordinates[0].y += userInput.y
+  checkSelfHit(snakeCoordinates[0])
+
 }
 const updateSnake = () => {
+
   //for each of the elements within the snake set the following segments equal to the segment in front of it
   for (let i = snakeCoordinates.length - 2; i >= 0; i--) {
     //sets the snakeCoordinate 1 ahead of the current element equal to a copy of to the current coordinates object
     snakeCoordinates[i + 1] = { ...snakeCoordinates[i] }
   }
+
 
 }
 //creates a new div element and populates it with where it appears and toggles its class applying css
@@ -57,12 +63,14 @@ const renderUpgrade = () => {
   upgradeDiv.style.gridColumnStart = upgrade.x
   upgradeDiv.classList.add('upgrade')
   gameDisplay.appendChild(upgradeDiv)
+
 }
 //if validateUpgrade returns true call the add upgrade function
 const updateUpgrade = () => {
   if (validateUpgrade(upgrade, snakeCoordinates[0])) {
     addUpgrade()
   }
+
 }
 // if the coordinates of the upgrade and the coordinates of the head of the snake are the same return true, otherwise return false
 const validateUpgrade = (upgradeCoordinates, snakeHeadCoordinates) => {
@@ -77,6 +85,7 @@ const validateUpgrade = (upgradeCoordinates, snakeHeadCoordinates) => {
 //for each of the amount of uprades push a new coordinate object to the end of the snake coordinates array with the values of the last segment
 //Had issue rendering first new segment, if statement handles if there is only one item in the coordinates array
 const addUpgrade = () => {
+
   if (snakeCoordinates.length === 1) {
     snakeCoordinates.push({ ...snakeCoordinates[snakeCoordinates.length - 1] })
   }
@@ -84,6 +93,7 @@ const addUpgrade = () => {
     snakeCoordinates.push({ ...snakeCoordinates[snakeCoordinates.length - 1] })
   }
   randomizeUpgrade()
+
 }
 //When called this function will set the new coordinates of the upgrade to a random number between 1 and 21
 //it will then plug in the coordinates to the verifyUpgradeLocation function if it is valid it will set the new coordinates for the food
@@ -114,14 +124,22 @@ const verifyUpgradeLocation = (x, y) => {
 }
 //Currently checks if the snakeHead is within the area of the actual gameboard, if not displays an alert
 const checkPosition = (headCoord) => {
-  if (headCoord.x > 21 || headCoord.x < 1 || headCoord.y > 21 || headCoord.y < 1) {
-    alert('YOU LOSE')
+  if (headCoord.x > 22 || headCoord.x < 0 || headCoord.y > 22 || headCoord.y < 0) {
+    alert('YOU LOSE outside bounds')
   }
+
 }
+//takes in the coordinates of the head and checks 1: if it has more than one body segment and 2: if the head coords are equal to any of the body segment coords the player loses
 const checkSelfHit = (headCoord) => {
-  for (let i = 1; i < snakeCoordinates.length; i++) {
-    if (headCoord.x === snakeCoordinates[i].x && headCoord.y === snakeCoordinates[i].y) {
-      alert('you lose!')
+  if (snakeCoordinates.length > 1) {
+    for (let i = 1; i < snakeCoordinates.length; i++) {
+      if (headCoord.x === snakeCoordinates[i].x && headCoord.y === snakeCoordinates[i].y) {
+        console.log(snakeCoordinates)
+        console.log(snakeCoordinates[i])
+
+        alert('you lose self hit')
+
+      }
     }
   }
 }
