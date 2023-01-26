@@ -8,21 +8,20 @@ let previousInput = { x: 0, y: 0 }
 let upgrade = { x: 12, y: 12 }
 let newUpgrades = 5
 let gameState = true
+const resetBtn = document.getElementById('reset')
 
 
 
 
 //runs through each step in the game and is called by the interval function to repeat
 const playGame = () => {
-
-  renderSnake()
-  renderUpgrade()
-  updateSnake()
-  updateUpgrade()
-  checkPosition(snakeCoordinates[0])
-
-
-  console.log(snakeCoordinates[0])
+  if (gameState === true) {
+    renderSnake()
+    renderUpgrade()
+    updateSnake()
+    updateUpgrade()
+    checkPosition(snakeCoordinates[0])
+  }
 }
 
 const renderSnake = () => {
@@ -125,6 +124,7 @@ const verifyUpgradeLocation = (x, y) => {
 //Currently checks if the snakeHead is within the area of the actual gameboard, if not displays an alert
 const checkPosition = (headCoord) => {
   if (headCoord.x > 22 || headCoord.x < 0 || headCoord.y > 22 || headCoord.y < 0) {
+    gameState = false
     alert('YOU LOSE outside bounds')
   }
 
@@ -136,6 +136,7 @@ const checkSelfHit = (headCoord) => {
       if (headCoord.x === snakeCoordinates[i].x && headCoord.y === snakeCoordinates[i].y) {
         console.log(snakeCoordinates)
         console.log(snakeCoordinates[i])
+        gameState = false
 
         alert('you lose self hit')
 
@@ -168,6 +169,10 @@ document.addEventListener('keypress', function (e) {
       userInput = { x: -1, y: 0 }
     }
   }
+})
+
+resetBtn.addEventListener('click', () => {
+
 })
 //Loops through the playGame function every second when speedLevel is 1000
 setInterval(playGame, speedLevel)
