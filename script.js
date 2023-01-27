@@ -1,4 +1,4 @@
-let speedLevel = 100
+let speedLevel = 80
 let snakeCoordinates = [
   { x: 11, y: 11 }
 ]
@@ -143,11 +143,7 @@ const checkSelfHit = (headCoord) => {
   if (snakeCoordinates.length > 1) {
     for (let i = 1; i < snakeCoordinates.length; i++) {
       if (headCoord.x === snakeCoordinates[i].x && headCoord.y === snakeCoordinates[i].y) {
-
         gameState = false
-
-
-
       }
     }
   }
