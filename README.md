@@ -5,7 +5,7 @@
 #### [Link1](https://trello.com/b/QGyrN83C/snake-like-game) | [Link2](https://trello.com/b/QGyrN83C/snake-like-game) | [Link3](https://trello.com/b/QGyrN83C/snake-like-game)
 ***
 ## ***Game Details***
-#### **This game will be a snake-like game played within the browser. Using arrow keys as input the user will be able to move around the board eating "food" which increase the size of the snake. If the "snake" comes in contact with itself or the border then the game will then be over**
+#### **This game is based off of the classic snake game which has seen many iterations in its time. This particular version while visually not as complex as its modern counterparts offers the same gameplay mechanics with many others coming in the future. The game utilizes WASD movement in order to control the snake which will start out as one segment. Each piece of food/upgrade the player can eat with the snakes head will increase the size of the snakes body by adding on another segment to its tail. The right hand of the screen has several key parts. The message that currently displays "you got this!" will display 'LOSS' when one of the losing conditions are met(the snake either hitting itself or the border) there is a score display that tracks how many upgrades the snake has gotten. Continuing down their is a reset button that the player can use when they have loss, it will reset the score and the position and length of the snake. Finally, below the reset button is the link to go back to the info page**
 ***
 ## Technologies
 * Javascript
@@ -14,13 +14,13 @@
 
 ***
 ## Screenshots
-#### **Image Header 1**
+#### **Loss Screen**
 ![Image](https://i.imgur.com/RD3UGpP.png)
-#### **Image Header 2**
+#### **Starting out**
 ![image](https://i.imgur.com/0Zo0ByZ.png)
 ***
 ## *Future Updates*
-- [ ] Add Score
-- [ ] Add Enemies
+- [X] Add Score
+- [] Fix small issue with upgrade spawns
 - [] Add sounds effects
 - [] Add difficulty levels
