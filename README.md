@@ -15,9 +15,9 @@
 ***
 ## Screenshots
 #### **Image Header 1**
-![Image](C:\Users\ohdon\OneDrive\Pictures\Screenshots\Screenshot (7).png)
+![Image](https://i.imgur.com/RD3UGpP.png)
 #### **Image Header 2**
-![image]()
+![image](https://i.imgur.com/0Zo0ByZ.png)
 ***
 ## *Future Updates*
 - [ ] Add Score
